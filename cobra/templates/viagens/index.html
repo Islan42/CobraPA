@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Viagens{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if cidades %}
+        <ul>
+            {% for cidade in cidades %}
+                <li>{{ cidade.nome }} - <a href="">Comprar</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Infelizmente, não há cidades a serem exibidas.</p>
+    {% endif %}
+{% endblock %}

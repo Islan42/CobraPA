@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}ADM - Promoções{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if promocoes %}
+        <ul>
+            {% for promocao in promocoes %}
+                <li><a href="">{{ promocao.nome }} - {{ promocao.desconto }}%</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Infelizmente, não há promoções a serem exibidas.</p>
+    {% endif %}
+    <a href="{{ url_for('adm.criar_promocao') }}">Adicionar Promoção</a>
+{% endblock %}
