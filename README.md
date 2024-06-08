@@ -9,6 +9,8 @@ O objetivo é utilizar os conhecimentos obtidos na disciplina de "Levantamento d
 ### Requisitos Funcionais
 - O Visitante procura um destino
 - O Visitante visualiza os detalhes do destino
+- O Visitante se cadastra no site
+- O Visitante faz login
 - O Comprador efetua a compra das passagens
 - O Comprador vê suas passagens compradas
 - O ADM cria destinos
@@ -17,4 +19,4 @@ O objetivo é utilizar os conhecimentos obtidos na disciplina de "Levantamento d
 ### Requisitos Não-Funcionais
 - Usar Flask como framewark para desenvolvimento
 - Usar Containers Docker
-- Usar Ciclo de Vida Iterativo-Incremental
+- Usar Ciclo de Vida Iterativo-Incremental,
