@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}{{ destino.nome }} - Comprar{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>Você está comprando uma passagem para <strong>{{ destino.nome }}</strong></p>
+    <form action="" method="POST">
+        <label for="origem">Origem:</label>
+        <select name="origem" id="origem" required>
+            <option value="" disabled selected>-- Selecione a Origem --</option>
+            {% for cidade in cidades %}
+                <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Valor da Passagem: R${{ destino.preco }}</p>
+
+        <input type="submit" value="Comprar">
+    </form>
+{% endblock %}

@@ -9,8 +9,15 @@
         <label for="nome">Nome da Cidade:</label>
         <input type="text" name="nome" id="nome" required>
 
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" id="descricao" required></textarea>
+
+        <label for="preco">Preço:</label>
+        <input type="number" min="0" name="preco" id="preco" required>
+
+        <label for="promocao">Promoção</label>
         <select name="promocao" id="promocao">
-            <option value="" selected disabled>Promoção</option>
+            <option value="" selected disabled>-- Escolha Uma --</option>
             {% for promocao in promocoes %}
                 <option value="{{ promocao['id'] }}">{{ promocao['nome'] }} - {{ promocao['desconto'] }}%</option>
             {% endfor%}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}{{ cidade.nome }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>{{ cidade.descricao }}</p>
+    <p>R${{ cidade.preco }}</p>
+    <a href="{{ url_for('tickets.buy', id = cidade.id) }}">Comprar</a>
+{% endblock %}

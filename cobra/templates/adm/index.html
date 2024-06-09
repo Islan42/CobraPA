@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}ADM - Promoções{% endblock %}</h1>
+    <h1>{% block title %}ADM{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
+    {% if cidades %}
+        <ul>
+            {% for cidade in cidades %}
+                <li><a href="{{ url_for('viagens.show_cidade', id = cidade.id) }}">{{ cidade.nome }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Infelizmente, não há cidades a serem exibidas.</p>
+    {% endif %}
+    <a href="{{ url_for('adm.criar_cidade') }}">Adicionar Cidade</a>
+    
+    <hr>
+
     {% if promocoes %}
         <ul>
             {% for promocao in promocoes %}

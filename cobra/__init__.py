@@ -36,4 +36,7 @@ def create_app(test_config = None):
     from . import adm
     app.register_blueprint(adm.bp)
 
+    from . import tickets
+    app.register_blueprint(tickets.bp)
+
     return app

@@ -8,7 +8,7 @@
     {% if cidades %}
         <ul>
             {% for cidade in cidades %}
-                <li>{{ cidade.nome }} - <a href="">Comprar</a></li>
+                <li>{{ cidade.nome }} - <a href="{{ url_for('viagens.show_cidade', id = cidade.id) }}">Comprar</a></li>
             {% endfor %}
         </ul>
     {% else %}

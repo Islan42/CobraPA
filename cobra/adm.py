@@ -4,18 +4,21 @@ from cobra.auth import adm_required, login_required, logout_required
 
 bp = Blueprint('adm', __name__, url_prefix='/adm')
 
-@bp.route('/cidades')
+@bp.route('/')
 @adm_required
-def index_cidades():
+def index():
     db = get_db()
     cidades = db.execute('SELECT * FROM cidade').fetchall()
-    return render_template('adm/index_cidades.html', cidades = cidades)
+    promocoes = db.execute('SELECT * FROM promocao').fetchall()
+    return render_template('adm/index.html', cidades = cidades, promocoes = promocoes)
 
 @bp.route('/cidades/create', methods = ('GET', 'POST'))
 @adm_required
 def criar_cidade():
     if request.method == 'POST':
         nome = request.form['nome']
+        descricao = request.form['descricao']
+        preco = int(request.form['preco'])
         promocao = request.form.get('promocao') or None
         error = None
         db = get_db()
@@ -25,23 +28,17 @@ def criar_cidade():
         
         if error is None:
             try:
-                db.execute('INSERT INTO cidade (nome, promocao_id) VALUES (?, ?)', (nome, promocao))
+                db.execute('INSERT INTO cidade (nome, descricao, preco, promocao_id) VALUES (?, ?, ?, ?)', (nome, descricao, preco, promocao))
                 db.commit()
             except db.IntegrityError:
                 error = f"{nome} já estava registrado(a)."
             else:
-                return redirect(url_for('adm.index_cidades'))
+                return redirect(url_for('adm.index'))
         flash(error)
     promocoes = get_db().execute('SELECT * FROM promocao').fetchall()
     return render_template('adm/create_cidade.html', promocoes = promocoes)
 
 
-@bp.route('/promocoes')
-@adm_required
-def index_promocoes():
-    db = get_db()
-    promocoes = db.execute('SELECT * FROM promocao').fetchall()
-    return render_template('adm/index_promocoes.html', promocoes = promocoes)
 
 @bp.route('/promocoes/create', methods = ('GET', 'POST'))
 @adm_required
@@ -68,7 +65,7 @@ def criar_promocao():
             except db.IntegrityError as e:
                 error = f"{e} já estava registrada."
             else:
-                return redirect(url_for('adm.index_promocoes'))
+                return redirect(url_for('adm.index'))
         
         flash(error)
     return render_template('adm/create_promocao.html')

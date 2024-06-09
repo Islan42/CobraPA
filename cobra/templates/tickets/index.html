@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Tickets{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if tickets %}
+        <ul>
+            {% for ticket in tickets %}
+                <li>{{ ticket.origem_nome }} -> {{ ticket.destino_nome }} - {{ ticket.partida }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Infelizmente, não há tickets em seu nome.</p>
+    {% endif %}
+{% endblock %}

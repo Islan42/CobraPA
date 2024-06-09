@@ -13,6 +13,8 @@ CREATE TABLE user (
 CREATE TABLE cidade (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
+    descricao TEXT NOT NULL,
+    preco INTEGER NOT NULL,
     promocao_id INTEGER,
     FOREIGN KEY (promocao_id) REFERENCES promocao (id)
 );
