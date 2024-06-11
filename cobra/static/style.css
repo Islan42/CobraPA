@@ -558,6 +558,15 @@ video {
   position: static;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .block {
   display: block;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
 }

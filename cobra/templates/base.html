@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=2" />
         <title>{% block title %}Teste{% endblock %} - Cobra</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
-    <body>
+    <body class="mx-auto max-w-4xl">
         <nav>
             <h1><a href="{{ url_for('index') }}">Cobra</a></h1>
             <ul>
