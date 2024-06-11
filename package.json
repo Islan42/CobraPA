@@ -1,0 +1,14 @@
+{
+  "name": "cobrapa",
+  "version": "1.0.0",
+  "description": "Este é um projeto acadêmico onde será desenvolvido o protótipo de uma página web para compra de passagens aéreas.\r O objetivo é utilizar os conhecimentos obtidos na disciplina de \"Levantamento de Requisitos - 1º Período - Faculdade Descomplica\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}

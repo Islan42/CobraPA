@@ -17,7 +17,7 @@
 
         <label for="promocao">Promoção</label>
         <select name="promocao" id="promocao">
-            <option value="" selected disabled>-- Escolha Uma --</option>
+            <option value="" selected>-- Escolha Uma --</option>
             {% for promocao in promocoes %}
                 <option value="{{ promocao['id'] }}">{{ promocao['nome'] }} - {{ promocao['desconto'] }}%</option>
             {% endfor%}
