@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="bg-zinc-200">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=2" />
@@ -7,24 +7,30 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
-    <body class="mx-auto max-w-4xl">
-        <nav>
-            <h1><a href="{{ url_for('index') }}">Cobra</a></h1>
-            <ul>
-                {% if g.user %}
-                    <li><span>{{ g.user['username'] }}</span></li>
-                    {% if g.user.adm %}
-                        <li><a href="{{ url_for('adm.index') }}">adm</a></li>
+    <body class="mx-auto max-w-4xl pt-2 bg-zinc-100  flex flex-col min-h-lvh">
+        <nav class="flex flex-row pl-2 h-10 bg-sky-500">
+            <div class="flex-1 flex flex-row items-center">
+                <h1 class="hover:text-red-700 hover:font-bold align-middle"><a href="{{ url_for('index') }}">Cobra</a></h1>
+            </div>
+
+            <div>
+                <ul class="flex flex-row h-full leading-10">
+                    {% if g.user %}
+                        <li class="px-2"><span>{{ g.user['username'] }}</span></li>
+                        {% if g.user.adm %}
+                            <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('adm.index') }}">adm</a></li>
+                        {% endif %}
+                        <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('tickets.index') }}">Tickets</a></li>
+                        <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('auth.register') }}">Register</a></li>
+                        <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('auth.login') }}">Log In</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('tickets.index') }}">Tickets</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-                    <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-                {% endif %}
-            </ul>
+                </ul>
+            </div>
         </nav>
-        <section class="content">
+
+        <main class="flex-1">
             <header>
                 {% block header %}{% endblock %}
             </header>
@@ -32,6 +38,10 @@
                 <div class="flash">{{ message }}</div>
             {% endfor %}
             {% block content %}{% endblock %}
-        </section>
+        </main>
+
+        <footer class="bg-emerald-500">
+            <h1>Islan12Dev</h1>
+        </footer>
     </body>
 </html>
