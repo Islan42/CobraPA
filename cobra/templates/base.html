@@ -4,19 +4,23 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=2" />
         <title>{% block title %}Teste{% endblock %} - Cobra</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <!-- 
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        -->
+        <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        {% block  extra_links %}{% endblock %}
     </head>
-    <body class="mx-auto max-w-4xl pt-2 bg-zinc-100  flex flex-col min-h-lvh">
+    <body class="mx-auto max-w-6xl pt-2 bg-zinc-100  flex flex-col min-h-lvh">
         <nav class="flex flex-row pl-2 h-10 bg-sky-500">
             <div class="flex-1 flex flex-row items-center">
-                <h1 class="hover:text-red-700 hover:font-bold align-middle"><a href="{{ url_for('index') }}">Cobra</a></h1>
+                <h1 class="text-3xl hover:text-red-600 font-bold align-middle"><a href="{{ url_for('index') }}">Cobra</a></h1>
             </div>
 
             <div>
                 <ul class="flex flex-row h-full leading-10">
                     {% if g.user %}
-                        <li class="px-2"><span>{{ g.user['username'] }}</span></li>
+                        <li class="px-2 font-bold"><span>{{ g.user['username'] }}</span></li>
                         {% if g.user.adm %}
                             <li class="px-2 hover:bg-sky-400"><a href="{{ url_for('adm.index') }}">adm</a></li>
                         {% endif %}
@@ -30,17 +34,17 @@
             </div>
         </nav>
 
-        <main class="flex-1">
-            <header>
+        <main class="flex-1 px-2">
+            <header class="my-1 text-2xl font-semibold">
                 {% block header %}{% endblock %}
             </header>
             {% for message in get_flashed_messages() %}
-                <div class="flash">{{ message }}</div>
+                <div class="my-2 p-2 bg-red-300">{{ message }}</div>
             {% endfor %}
             {% block content %}{% endblock %}
         </main>
 
-        <footer class="bg-emerald-500">
+        <footer class="px-2 bg-emerald-500">
             <h1>Islan12Dev</h1>
         </footer>
     </body>

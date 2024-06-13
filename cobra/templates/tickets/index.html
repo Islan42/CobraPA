@@ -6,9 +6,15 @@
 
 {% block content %}
     {% if tickets %}
-        <ul>
+        <ul class="">
             {% for ticket in tickets %}
-                <li>{{ ticket.origem_nome }} -> {{ ticket.destino_nome }} - {{ ticket.partida }}</li>
+                <li class="space-x-1 bg-orange-100 py-2 rounded my-1 first:pt-0 last:pb-0">
+                    <div></div>
+                    <div>
+                        <p class="font-bold">{{ ticket.origem_nome }} -> {{ ticket.destino_nome }}</p>
+                        <p>{{ ticket.partida }}</p>
+                    </div>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

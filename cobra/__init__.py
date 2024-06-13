@@ -39,4 +39,7 @@ def create_app(test_config = None):
     from . import tickets
     app.register_blueprint(tickets.bp)
 
+    from . import api
+    app.register_blueprint(api.bp)
+
     return app

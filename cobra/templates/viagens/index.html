@@ -6,7 +6,7 @@
 
 {% block content %}
     {% if cidades %}
-        <ul>
+        <ul id="carrossel-home">
             {% for cidade in cidades %}
                 <li>{{ cidade.nome }} - <a href="{{ url_for('viagens.show_cidade', id = cidade.id) }}">Comprar</a></li>
             {% endfor %}
@@ -14,4 +14,9 @@
     {% else %}
         <p>Infelizmente, não há cidades a serem exibidas.</p>
     {% endif %}
+{% endblock %}
+
+{% block extra_links %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='viagens/index.js') }}"></script>
 {% endblock %}
