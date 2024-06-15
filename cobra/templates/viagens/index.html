@@ -6,11 +6,26 @@
 
 {% block content %}
     {% if cidades %}
-        <ul id="carrossel-home">
-            {% for cidade in cidades %}
-                <li>{{ cidade.nome }} - <a href="{{ url_for('viagens.show_cidade', id = cidade.id) }}">Comprar</a></li>
-            {% endfor %}
-        </ul>
+        <div id="carrossel-home" class="max-w-2xl mx-auto">
+            <ul id="carrossel-home-lista">
+                {% for cidade in cidades %}
+                    <li class="h-12 bg-orange-100 my-1  {% if not loop.first %}hidden{% endif %}">
+                        <a href="{{ url_for('viagens.show_cidade', id = cidade.id) }}">
+                            <img src="" alt="">
+                            <div>
+                                <p class="font-bold">{{ cidade.nome }}</p>
+                                <p>R${{ cidade.preco }}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div id="carrossel-home-controle" class="space-x-1">
+                {% for cidade in cidades %}
+                    <span class="px-2 bg-red-100 cursor-pointer">{{ loop.index }}</span>
+                {% endfor %}
+            </div>
+        </div>
     {% else %}
         <p>Infelizmente, não há cidades a serem exibidas.</p>
     {% endif %}
